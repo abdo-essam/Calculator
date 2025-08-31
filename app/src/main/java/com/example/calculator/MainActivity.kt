@@ -2,13 +2,15 @@ package com.example.calculator
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.calculator.databinding.ActivityMainBinding
+import com.example.calculator.viewmodel.CalculatorViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val calculator = Calculator()
+    private val viewModel: CalculatorViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,44 +19,44 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupCalculator()
-        updateDisplay(calculator.clear())
+        setupButtons()
+        observeViewModel()
     }
 
-    private fun setupCalculator() {
+    private fun setupButtons() {
         with(binding) {
             // Number buttons
-            listOf(btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9)
-                .forEachIndexed { index, button ->
-                    button.onClick { handleNumberInput(index.toString()) }
-                }
+            btn0.setOnClickListener { viewModel.onNumberClick("0") }
+            btn1.setOnClickListener { viewModel.onNumberClick("1") }
+            btn2.setOnClickListener { viewModel.onNumberClick("2") }
+            btn3.setOnClickListener { viewModel.onNumberClick("3") }
+            btn4.setOnClickListener { viewModel.onNumberClick("4") }
+            btn5.setOnClickListener { viewModel.onNumberClick("5") }
+            btn6.setOnClickListener { viewModel.onNumberClick("6") }
+            btn7.setOnClickListener { viewModel.onNumberClick("7") }
+            btn8.setOnClickListener { viewModel.onNumberClick("8") }
+            btn9.setOnClickListener { viewModel.onNumberClick("9") }
 
-            // Operators
-            btnAdd.onClick { handleOperatorInput("+") }
-            btnSubtract.onClick { handleOperatorInput("-") }
-            btnMultiply.onClick { handleOperatorInput("×") }
-            btnDivide.onClick { handleOperatorInput("/") }
+            // Operator buttons
+            btnAdd.setOnClickListener { viewModel.onOperatorClick("+") }
+            btnSubtract.setOnClickListener { viewModel.onOperatorClick("-") }
+            btnMultiply.setOnClickListener { viewModel.onOperatorClick("×") }
+            btnDivide.setOnClickListener { viewModel.onOperatorClick("/") }
 
-            // Functions
-            btnAC.onClick { updateDisplay(calculator.clear()) }
-            btnBackspace.onClick { updateDisplay(calculator.backspace()) }
-            btnDot.onClick { updateDisplay(calculator.decimal()) }
-            btnPlusMinus.onClick { updateDisplay(calculator.toggleSign()) }
-            btnPercent.onClick { updateDisplay(calculator.percent()) }
-            btnEquals.onClick { updateDisplay(calculator.calculate()) }
+            // Function buttons
+            btnAC.setOnClickListener { viewModel.onClearClick() }
+            btnBackspace.setOnClickListener { viewModel.onBackspaceClick() }
+            btnDot.setOnClickListener { viewModel.onDecimalClick() }
+            btnPlusMinus.setOnClickListener { viewModel.onToggleSignClick() }
+            btnPercent.setOnClickListener { viewModel.onPercentClick() }
+            btnEquals.setOnClickListener { viewModel.onEqualsClick() }
         }
     }
 
-    private fun handleNumberInput(number: String) {
-        updateDisplay(calculator.inputNumber(number))
-    }
-
-    private fun handleOperatorInput(operator: String) {
-        updateDisplay(calculator.inputOperator(operator))
-    }
-
-    private fun updateDisplay(state: Calculator.CalculatorState) {
-        binding.tvResult.text = state.displayValue
-        binding.tvExpression.text = state.expression
+    private fun observeViewModel() {
+        viewModel.calculatorState.observe(this) { state ->
+            binding.tvResult.text = state.displayValue
+            binding.tvExpression.text = state.expression
+        }
     }
 }
