@@ -3,7 +3,7 @@
     android:color="?attr/colorControlHighlight">
     <item>
         <shape android:shape="oval">
-            <solid android:color="#F8F8F8" />
+            <solid android:color="@color/button_gray" />
             <size
                 android:width="76dp"
                 android:height="76dp" />

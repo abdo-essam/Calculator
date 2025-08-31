@@ -2,6 +2,7 @@ package com.example.calculator
 
 import com.example.calculator.model.CalculatorOperation
 import com.example.calculator.state.CalculatorState
+import com.example.calculator.utils.NumberFormatter
 import java.text.DecimalFormat
 
 class Calculator {
@@ -9,8 +10,6 @@ class Calculator {
     private var previousNumber = ""
     private var currentOperation: CalculatorOperation? = null
     private var isNewCalculation = true
-
-    private val decimalFormat = DecimalFormat("#,###.########")
 
     fun inputNumber(number: String): CalculatorState {
         if (isNewCalculation) {
@@ -128,8 +127,8 @@ class Calculator {
 
     fun getCurrentState(): CalculatorState {
         val displayValue = when {
-            currentNumber.isNotEmpty() -> formatNumber(currentNumber)
-            previousNumber.isNotEmpty() -> formatNumber(previousNumber)
+            currentNumber.isNotEmpty() -> NumberFormatter.format(currentNumber)
+            previousNumber.isNotEmpty() -> NumberFormatter.format(previousNumber)
             else -> "0"
         }
 
@@ -143,23 +142,12 @@ class Calculator {
 
         return when {
             previousNumber.isNotEmpty() && currentNumber.isNotEmpty() -> {
-                "${formatNumber(previousNumber)} ${operation.symbol} ${formatNumber(currentNumber)}"
+                "${NumberFormatter.format(previousNumber)} ${operation.symbol} ${NumberFormatter.format(currentNumber)}"
             }
             previousNumber.isNotEmpty() -> {
-                "${formatNumber(previousNumber)} ${operation.symbol}"
+                "${NumberFormatter.format(previousNumber)} ${operation.symbol}"
             }
             else -> ""
-        }
-    }
-
-    private fun formatNumber(number: String): String {
-        if (number.isEmpty()) return "0"
-
-        return try {
-            val value = number.toDouble()
-            decimalFormat.format(value)
-        } catch (e: NumberFormatException) {
-            number
         }
     }
 }
