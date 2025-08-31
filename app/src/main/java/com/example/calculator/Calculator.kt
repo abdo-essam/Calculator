@@ -120,7 +120,7 @@ class Calculator {
         return getCurrentState()
     }
 
-    private fun getCurrentState(): CalculatorState {
+    fun getCurrentState(): CalculatorState {
         val displayValue = when {
             currentNumber.isNotEmpty() -> formatNumber(currentNumber)
             previousNumber.isNotEmpty() -> formatNumber(previousNumber)
