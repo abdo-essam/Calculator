@@ -5,6 +5,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.calculator.databinding.ActivityMainBinding
+import com.example.calculator.model.CalculatorAction
+import com.example.calculator.model.CalculatorNumber
+import com.example.calculator.model.CalculatorOperation
 import com.example.calculator.viewmodel.CalculatorViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -26,30 +29,30 @@ class MainActivity : AppCompatActivity() {
     private fun setupButtons() {
         with(binding) {
             // Number buttons
-            btn0.setOnClickListener { viewModel.onNumberClick("0") }
-            btn1.setOnClickListener { viewModel.onNumberClick("1") }
-            btn2.setOnClickListener { viewModel.onNumberClick("2") }
-            btn3.setOnClickListener { viewModel.onNumberClick("3") }
-            btn4.setOnClickListener { viewModel.onNumberClick("4") }
-            btn5.setOnClickListener { viewModel.onNumberClick("5") }
-            btn6.setOnClickListener { viewModel.onNumberClick("6") }
-            btn7.setOnClickListener { viewModel.onNumberClick("7") }
-            btn8.setOnClickListener { viewModel.onNumberClick("8") }
-            btn9.setOnClickListener { viewModel.onNumberClick("9") }
+            btn0.setOnClickListener { viewModel.onNumberClick(CalculatorNumber.ZERO) }
+            btn1.setOnClickListener { viewModel.onNumberClick(CalculatorNumber.ONE) }
+            btn2.setOnClickListener { viewModel.onNumberClick(CalculatorNumber.TWO) }
+            btn3.setOnClickListener { viewModel.onNumberClick(CalculatorNumber.THREE) }
+            btn4.setOnClickListener { viewModel.onNumberClick(CalculatorNumber.FOUR) }
+            btn5.setOnClickListener { viewModel.onNumberClick(CalculatorNumber.FIVE) }
+            btn6.setOnClickListener { viewModel.onNumberClick(CalculatorNumber.SIX) }
+            btn7.setOnClickListener { viewModel.onNumberClick(CalculatorNumber.SEVEN) }
+            btn8.setOnClickListener { viewModel.onNumberClick(CalculatorNumber.EIGHT) }
+            btn9.setOnClickListener { viewModel.onNumberClick(CalculatorNumber.NINE) }
 
-            // Operator buttons
-            btnAdd.setOnClickListener { viewModel.onOperatorClick("+") }
-            btnSubtract.setOnClickListener { viewModel.onOperatorClick("-") }
-            btnMultiply.setOnClickListener { viewModel.onOperatorClick("×") }
-            btnDivide.setOnClickListener { viewModel.onOperatorClick("/") }
+            // Operation buttons
+            btnAdd.setOnClickListener { viewModel.onOperationClick(CalculatorOperation.ADD) }
+            btnSubtract.setOnClickListener { viewModel.onOperationClick(CalculatorOperation.SUBTRACT) }
+            btnMultiply.setOnClickListener { viewModel.onOperationClick(CalculatorOperation.MULTIPLY) }
+            btnDivide.setOnClickListener { viewModel.onOperationClick(CalculatorOperation.DIVIDE) }
+            btnPercent.setOnClickListener { viewModel.onOperationClick(CalculatorOperation.PERCENT) }
+            btnEquals.setOnClickListener { viewModel.onOperationClick(CalculatorOperation.EQUALS) }
 
-            // Function buttons
-            btnAC.setOnClickListener { viewModel.onClearClick() }
-            btnBackspace.setOnClickListener { viewModel.onBackspaceClick() }
-            btnDot.setOnClickListener { viewModel.onDecimalClick() }
-            btnPlusMinus.setOnClickListener { viewModel.onToggleSignClick() }
-            btnPercent.setOnClickListener { viewModel.onPercentClick() }
-            btnEquals.setOnClickListener { viewModel.onEqualsClick() }
+            // Action buttons
+            btnAC.setOnClickListener { viewModel.onActionClick(CalculatorAction.CLEAR) }
+            btnBackspace.setOnClickListener { viewModel.onActionClick(CalculatorAction.BACKSPACE) }
+            btnDot.setOnClickListener { viewModel.onActionClick(CalculatorAction.DECIMAL) }
+            btnPlusMinus.setOnClickListener { viewModel.onActionClick(CalculatorAction.TOGGLE_SIGN) }
         }
     }
 

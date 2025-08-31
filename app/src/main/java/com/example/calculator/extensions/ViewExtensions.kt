@@ -1,4 +1,4 @@
-package com.example.calculator
+package com.example.calculator.extensions
 
 import android.view.View
 

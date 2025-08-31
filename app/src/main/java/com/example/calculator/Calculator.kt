@@ -1,11 +1,13 @@
 package com.example.calculator
 
+import com.example.calculator.model.CalculatorOperation
+import com.example.calculator.state.CalculatorState
 import java.text.DecimalFormat
 
 class Calculator {
     private var currentNumber = ""
     private var previousNumber = ""
-    private var currentOperator = ""
+    private var currentOperation: CalculatorOperation? = null
     private var isNewCalculation = true
 
     private val decimalFormat = DecimalFormat("#,###.########")
@@ -20,36 +22,39 @@ class Calculator {
         return getCurrentState()
     }
 
-    fun inputOperator(operator: String): CalculatorState {
+    fun inputOperation(operation: CalculatorOperation): CalculatorState {
         if (currentNumber.isNotEmpty()) {
-            if (currentOperator.isNotEmpty() && previousNumber.isNotEmpty()) {
+            val existingOperation = currentOperation
+            if (existingOperation != null && previousNumber.isNotEmpty()) {
                 calculate()
             } else {
                 previousNumber = currentNumber
             }
 
-            currentOperator = operator
+            currentOperation = operation
             currentNumber = ""
         } else if (previousNumber.isNotEmpty()) {
-            currentOperator = operator
+            currentOperation = operation
         }
 
         return getCurrentState()
     }
 
     fun calculate(): CalculatorState {
-        if (currentNumber.isEmpty() || previousNumber.isEmpty() || currentOperator.isEmpty()) {
+        val operation = currentOperation ?: return getCurrentState()
+
+        if (currentNumber.isEmpty() || previousNumber.isEmpty()) {
             return getCurrentState()
         }
 
         val num1 = previousNumber.toDoubleOrNull() ?: 0.0
         val num2 = currentNumber.toDoubleOrNull() ?: 0.0
 
-        val result = when (currentOperator) {
-            "+" -> num1 + num2
-            "-" -> num1 - num2
-            "×" -> num1 * num2
-            "/" -> {
+        val result = when (operation) {
+            CalculatorOperation.ADD -> num1 + num2
+            CalculatorOperation.SUBTRACT -> num1 - num2
+            CalculatorOperation.MULTIPLY -> num1 * num2
+            CalculatorOperation.DIVIDE -> {
                 if (num2 != 0.0) {
                     num1 / num2
                 } else {
@@ -60,12 +65,13 @@ class Calculator {
                     )
                 }
             }
-            else -> 0.0
+            CalculatorOperation.PERCENT -> num1 * (num2 / 100)
+            CalculatorOperation.EQUALS -> num1
         }
 
         previousNumber = result.toString()
         currentNumber = ""
-        currentOperator = ""
+        currentOperation = null
         isNewCalculation = true
 
         return getCurrentState()
@@ -74,7 +80,7 @@ class Calculator {
     fun clear(): CalculatorState {
         currentNumber = ""
         previousNumber = ""
-        currentOperator = ""
+        currentOperation = null
         isNewCalculation = true
         return CalculatorState("0", "")
     }
@@ -133,12 +139,14 @@ class Calculator {
     }
 
     private fun buildExpression(): String {
+        val operation = currentOperation ?: return ""
+
         return when {
-            previousNumber.isNotEmpty() && currentOperator.isNotEmpty() && currentNumber.isNotEmpty() -> {
-                "${formatNumber(previousNumber)} $currentOperator ${formatNumber(currentNumber)}"
+            previousNumber.isNotEmpty() && currentNumber.isNotEmpty() -> {
+                "${formatNumber(previousNumber)} ${operation.symbol} ${formatNumber(currentNumber)}"
             }
-            previousNumber.isNotEmpty() && currentOperator.isNotEmpty() -> {
-                "${formatNumber(previousNumber)} $currentOperator"
+            previousNumber.isNotEmpty() -> {
+                "${formatNumber(previousNumber)} ${operation.symbol}"
             }
             else -> ""
         }
@@ -154,10 +162,4 @@ class Calculator {
             number
         }
     }
-
-    data class CalculatorState(
-        val displayValue: String,
-        val expression: String,
-        val isError: Boolean = false
-    )
 }
