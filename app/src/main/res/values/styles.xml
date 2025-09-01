@@ -2,16 +2,11 @@
 <resources>
     <!-- Base button style matching Figma specs -->
     <style name="ButtonBase" parent="Widget.MaterialComponents.Button">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:insetLeft">0dp</item>
         <item name="android:insetRight">0dp</item>
-        <item name="android:minWidth">76dp</item>
-        <item name="android:minHeight">76dp</item>
-        <item name="android:width">76dp</item>
-        <item name="android:height">76dp</item>
-        <item name="cornerRadius">38dp</item>
         <item name="android:fontFamily">@font/doppio_one</item>
         <item name="android:stateListAnimator">@null</item>
         <item name="elevation">0dp</item>

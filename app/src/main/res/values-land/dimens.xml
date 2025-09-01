@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Button Dimensions - Smaller for landscape -->
+    <dimen name="button_size">@dimen/_42sdp</dimen>
+    <dimen name="button_margin">@dimen/_6sdp</dimen>
+
+    <!-- Button Text Size - Smaller for landscape -->
+    <dimen name="button_text_size">@dimen/_14ssp</dimen>
+
+    <!-- Container Margins - Reduced for landscape -->
+    <dimen name="container_margin_horizontal">0dp</dimen>
+    <dimen name="container_margin_vertical">@dimen/_16sdp</dimen>
+    <dimen name="container_margin_top">@dimen/_8sdp</dimen>
+
+    <!-- Row Margins - Reduced -->
+    <dimen name="row_margin_bottom">@dimen/_6sdp</dimen>
+
+    <!-- Text Sizes - Smaller for landscape -->
+    <dimen name="text_size_expression">@dimen/_14ssp</dimen>
+    <dimen name="text_size_result">@dimen/_32ssp</dimen>
+
+    <!-- Text Paddings - Reduced -->
+    <dimen name="text_padding_horizontal">@dimen/_16sdp</dimen>
+    <dimen name="text_padding_bottom">@dimen/_16sdp</dimen>
+
+    <!-- Bottom Indicator - Smaller -->
+    <dimen name="indicator_width">@dimen/_24sdp</dimen>
+    <dimen name="indicator_height">@dimen/_2sdp</dimen>
+    <dimen name="indicator_margin_bottom">@dimen/_4sdp</dimen>
+</resources>

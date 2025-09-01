@@ -25,11 +25,11 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/doppio_one"
             android:gravity="end"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
+            android:paddingStart="@dimen/text_padding_horizontal"
+            android:paddingEnd="@dimen/text_padding_horizontal"
             android:text=""
             android:textColor="@color/gray_text"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_size_expression"
             app:layout_constraintBottom_toTopOf="@+id/tvResult"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -41,12 +41,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/doppio_one"
             android:gravity="end"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingBottom="32dp"
+            android:paddingStart="@dimen/text_padding_horizontal"
+            android:paddingEnd="@dimen/text_padding_horizontal"
+            android:paddingBottom="@dimen/text_padding_bottom"
             android:text="0"
             android:textColor="@color/brown_text"
-            android:textSize="48sp"
+            android:textSize="@dimen/text_size_result"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -54,9 +54,9 @@
         <!-- Bottom Indicator Rectangle -->
         <View
             android:id="@+id/bottomIndicator"
-            android:layout_width="32dp"
-            android:layout_height="4dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="@dimen/indicator_width"
+            android:layout_height="@dimen/indicator_height"
+            android:layout_marginBottom="@dimen/indicator_margin_bottom"
             android:background="@drawable/bottom_indicator"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,9 +70,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="@dimen/container_margin_horizontal"
+        android:layout_marginBottom="@dimen/container_margin_vertical"
+        android:layout_marginTop="@dimen/container_margin_top"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,24 +83,24 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/row_margin_bottom"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnAC"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="AC" />
 
             <Button
                 android:id="@+id/btnBackspace"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 app:icon="@drawable/arrow_left"
                 app:iconGravity="textStart"
@@ -110,17 +110,17 @@
             <Button
                 android:id="@+id/btnPercent"
                 style="@style/ButtonOrange"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_orange"
                 android:text="%" />
 
             <Button
                 android:id="@+id/btnDivide"
                 style="@style/ButtonOrange"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
                 android:background="@drawable/button_circular_orange"
                 android:text="/" />
         </LinearLayout>
@@ -129,41 +129,41 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/row_margin_bottom"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn7"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="7" />
 
             <Button
                 android:id="@+id/btn8"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="8" />
 
             <Button
                 android:id="@+id/btn9"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="9" />
 
             <Button
                 android:id="@+id/btnMultiply"
                 style="@style/ButtonOrange"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
                 android:background="@drawable/button_circular_orange"
                 android:text="×" />
         </LinearLayout>
@@ -172,41 +172,41 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/row_margin_bottom"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn4"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="4" />
 
             <Button
                 android:id="@+id/btn5"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="5" />
 
             <Button
                 android:id="@+id/btn6"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="6" />
 
             <Button
                 android:id="@+id/btnAdd"
                 style="@style/ButtonOrange"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
                 android:background="@drawable/button_circular_orange"
                 android:text="+" />
         </LinearLayout>
@@ -215,41 +215,41 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/row_margin_bottom"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn1"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="1" />
 
             <Button
                 android:id="@+id/btn2"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="2" />
 
             <Button
                 android:id="@+id/btn3"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="3" />
 
             <Button
                 android:id="@+id/btnSubtract"
                 style="@style/ButtonOrange"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
                 android:background="@drawable/button_circular_orange"
                 android:text="-" />
         </LinearLayout>
@@ -263,35 +263,35 @@
             <Button
                 android:id="@+id/btnPlusMinus"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="±" />
 
             <Button
                 android:id="@+id/btn0"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="0" />
 
             <Button
                 android:id="@+id/btnDot"
                 style="@style/ButtonGray"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/button_margin"
                 android:background="@drawable/button_circular_gray"
                 android:text="." />
 
             <Button
                 android:id="@+id/btnEquals"
                 style="@style/ButtonOrange"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
+                android:layout_width="@dimen/button_size"
+                android:layout_height="@dimen/button_size"
                 android:background="@drawable/button_circular_orange"
                 android:text="=" />
         </LinearLayout>
