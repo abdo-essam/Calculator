@@ -27,4 +27,7 @@
     <dimen name="indicator_width">@dimen/_28sdp</dimen>
     <dimen name="indicator_height">@dimen/_3sdp</dimen>
     <dimen name="indicator_margin_bottom">@dimen/_6sdp</dimen>
+
+    <!-- Icon Size -->
+    <dimen name="icon_size">@dimen/_14sdp</dimen>
 </resources>
