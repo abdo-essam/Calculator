@@ -4,9 +4,6 @@
     <item>
         <shape android:shape="oval">
             <solid android:color="@color/button_orange" />
-            <size
-                android:width="76dp"
-                android:height="76dp" />
         </shape>
     </item>
 </ripple>

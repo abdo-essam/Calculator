@@ -50,4 +50,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     testImplementation(libs.mockito.core)
     testImplementation(libs.androidx.core.testing)
+    implementation(libs.sdp.android)
+    implementation(libs.ssp.android)
 }
