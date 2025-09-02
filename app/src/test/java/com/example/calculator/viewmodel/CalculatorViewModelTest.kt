@@ -1,9 +1,9 @@
 package com.example.calculator.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.calculator.model.CalculatorAction
-import com.example.calculator.model.CalculatorNumber
-import com.example.calculator.model.CalculatorOperation
+import com.example.calculator.model.enums.CalculatorAction
+import com.example.calculator.model.enums.CalculatorNumber
+import com.example.calculator.model.enums.CalculatorOperation
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule

@@ -1,6 +1,7 @@
 package com.example.calculator
 
-import com.example.calculator.model.CalculatorOperation
+import com.example.calculator.model.calculator.Calculator
+import com.example.calculator.model.enums.CalculatorOperation
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test

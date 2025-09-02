@@ -5,9 +5,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.calculator.databinding.ActivityMainBinding
-import com.example.calculator.model.CalculatorAction
-import com.example.calculator.model.CalculatorNumber
-import com.example.calculator.model.CalculatorOperation
+import com.example.calculator.model.enums.CalculatorAction
+import com.example.calculator.model.enums.CalculatorNumber
+import com.example.calculator.model.enums.CalculatorOperation
 import com.example.calculator.viewmodel.CalculatorViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -58,8 +58,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeViewModel() {
         viewModel.calculatorState.observe(this) { state ->
-            binding.tvResult.text = state.displayValue
-            binding.tvExpression.text = state.expression
+            with(binding) {
+                tvResult.text = state.displayValue
+
+                // Show current expression or previous completed expression
+                tvExpression.text = when {
+                    state.isCalculated && state.previousExpression.isNotEmpty() ->
+                        state.previousExpression
+                    state.expression.isNotEmpty() -> state.expression
+                    else -> ""
+                }
+            }
         }
     }
 }
